@@ -171,3 +171,64 @@ mysql> SELECT gender, COUNT(name) FROM employee_payroll GROUP BY gender;
 | M      |           3 |
 +--------+-------------+
 1 row in set (0.00 sec)
+
+ #UC8 Ability to extend employee_payroll data to store employee information like employee phone, address and department - Ensure employee department
+mysql> select * from employee_payroll;
++----+--------+--------+----------+------------+
+| id | name   | Gender | salary   | start      |
++----+--------+--------+----------+------------+
+|  1 | Bhuwan | M      | 40000000 | 2022-01-01 |
+|  2 | Rahul  | M      |  2500000 | 2022-01-05 |
+|  3 | Deep   | M      |  3500000 | 2022-01-10 |
++----+--------+--------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee_payroll add phone_number varchar(250) after name;
+Query OK, 0 rows affected (0.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+--------+--------------+--------+----------+------------+
+| id | name   | phone_number | Gender | salary   | start      |
++----+--------+--------------+--------+----------+------------+
+|  1 | Bhuwan | NULL         | M      | 40000000 | 2022-01-01 |
+|  2 | Rahul  | NULL         | M      |  2500000 | 2022-01-05 |
+|  3 | Deep   | NULL         | M      |  3500000 | 2022-01-10 |
++----+--------+--------------+--------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee_payroll set phone_number='9389965338'where name='Bhuwan';
+Query OK, 1 row affected (0.20 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set phone_number='8329923332'where name='Rahul';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set phone_number='9370785156'where name='Deep';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  select * from employee_payroll;
++----+--------+--------------+--------+----------+------------+
+| id | name   | phone_number | Gender | salary   | start      |
++----+--------+--------------+--------+----------+------------+
+|  1 | Bhuwan | 9389965338   | M      | 40000000 | 2022-01-01 |
+|  2 | Rahul  | 8329923332   | M      |  2500000 | 2022-01-05 |
+|  3 | Deep   | 9370785156   | M      |  3500000 | 2022-01-10 |
++----+--------+--------------+--------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee_payroll add address varchar(255)not null default 'mumbai,Maharashtra'after phone_number;
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+--------+--------------+--------------------+--------+----------+------------+
+| id | name   | phone_number | address            | Gender | salary   | start      |
++----+--------+--------------+--------------------+--------+----------+------------+
+|  1 | Bhuwan | 9389965338   | mumbai,Maharashtra | M      | 40000000 | 2022-01-01 |
+|  2 | Rahul  | 8329923332   | mumbai,Maharashtra | M      |  2500000 | 2022-01-05 |
+|  3 | Deep   | 9370785156   | mumbai,Maharashtra | M      |  3500000 | 2022-01-10 |
++----+--------+--------------+--------------------+--------+----------+------------+
+3 rows in set (0.00 sec)
