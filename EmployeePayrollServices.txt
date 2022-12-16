@@ -84,3 +84,31 @@ mysql> SELECT salary FROM employee_payroll
 | 4000000 |
 +---------+
 1 row in set (0.00 sec)
+
+ #UC6 Ability to add Gender to employee payroll table and update rows to reflect the correct employee Gender
+mysql>
+mysql> ALTER TABLE employee_payroll ADD Gender varchar(10) after name;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update employee_payroll set gender = 'M' where name = 'Bhuwan';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set gender = 'M' where name = 'Rahul';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set gender = 'M' where name = 'Deep';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll;
++----+--------+--------+---------+------------+
+| id | name   | Gender | salary  | start      |
++----+--------+--------+---------+------------+
+|  1 | Bhuwan | M      | 4000000 | 2022-01-01 |
+|  2 | Rahul  | M      | 2500000 | 2022-01-05 |
+|  3 | Deep   | M      | 3500000 | 2022-01-10 |
++----+--------+--------+---------+------------+
+3 rows in set (0.00 sec)
