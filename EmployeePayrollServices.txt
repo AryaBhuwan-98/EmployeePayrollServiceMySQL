@@ -271,6 +271,7 @@ mysql> alter table employee_payroll add net_pay float(10) not null default '2000
 Query OK, 0 rows affected (0.06 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
+
 mysql> select * from employee_payroll;
 +----+--------+-----------+------------+-------------+------------+---------+--------------+--------------------+--------+------------+
 | id | name   | basic_pay | deductions | taxable_pay | income_tax | net_pay | phone_number | address            | Gender | start      |
@@ -280,3 +281,5 @@ mysql> select * from employee_payroll;
 |  3 | Deep   |   5000000 |      60000 |        7000 |      20000 |   20000 | 9370785156   | mumbai,Maharashtra | M      | 2022-01-10 |
 +----+--------+-----------+------------+-------------+------------+---------+--------------+--------------------+--------+------------+
 3 rows in set (0.00 sec)
+
+
